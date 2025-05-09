@@ -2,6 +2,7 @@
 Projecto 2025, modulo 1
 ## 🧠 Project Overview
 Caesar Cipher Encryption Tool
+
 A Java-based command-line tool to encrypt and decrypt .txt files using a Caesar Cipher. It allows users to enter file paths, validates input, and uses character manipulation to apply encryption or decryption.
 ## ⚙️ Program Flow
 Main Flow:
