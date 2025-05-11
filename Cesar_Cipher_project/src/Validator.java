@@ -1,9 +1,8 @@
 import java.io.File;
-import java.util.Scanner;
 
 public class Validator {
 
-    public static boolean validateFile(String pathEncrypt, Scanner scan){
+    public static boolean validateFile(String pathEncrypt){
         File file = new File(pathEncrypt);
         if (file.exists() && file.isFile()){
             return true;
@@ -14,7 +13,12 @@ public class Validator {
     }
 
     public static boolean validateKey(int numKey, char[] alphabet){
-
-        return true;
+        alphabet = Alphabet.ENGLISH_ALPHABET;
+        if (numKey >= 0 && numKey <= alphabet.length) {
+            return true;
+        } else {
+            System.out.println("⚠️ERROR: Invalid key. Please try again");
+            return false;
+        }
     }
 }

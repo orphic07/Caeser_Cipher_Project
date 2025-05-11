@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Menu {
@@ -12,29 +13,33 @@ public class Menu {
         System.out.println("===================================");
     }
 
-    public void executeOption(int option, Scanner scan) {
+    public void executeOption(int option, Scanner scan) throws IOException {
         switch (option) {
             case 1:
-                System.out.println("ℹ️ This Cypher only supports the following characters: A-Z | a-z | 0-9 | . , ! ? ");
+                //Validate file
                 String pathEncrypt = "";
                 boolean isPathValid = false;
                 while(!isPathValid){
                     System.out.println("Please introduce the path of your file for encrypting:");
                     pathEncrypt = scan.nextLine();
-                    isPathValid = Validator.validateFile(pathEncrypt, scan);
+                    isPathValid = Validator.validateFile(pathEncrypt);
                 }
                 System.out.println("✅ Valid path received: " + pathEncrypt);
-                System.out.println("Please introduce the key for the encryption: ");
-                String key = scan.nextLine();
-                int numKey = Integer.parseInt(key);
-                boolean isKeyValid = Validator.validateKey(numKey, Alphabet.ENGLISH_ALPHABET);
-
-
-                //encryption process
-                System.out.println("✅Encryption completed.");
+                //Validate key
+                String keyEncrypt = "";
+                boolean isKeyValid = false;
+                while(!isKeyValid){
+                    System.out.println("Please introduce the key for the encryption (0 + " + Alphabet.ENGLISH_ALPHABET.length + "):");
+                    keyEncrypt = scan.nextLine();
+                    int numKey = Integer.parseInt(keyEncrypt);
+                    isKeyValid = Validator.validateKey(numKey, Alphabet.ENGLISH_ALPHABET);
+                }
+                //Encrypt
+                StringBuilder fileContent = FileManager.readFile(pathEncrypt);
+                StringBuilder encrypted = Cypher.encrypt(fileContent, Integer.parseInt(keyEncrypt), Alphabet.ENGLISH_ALPHABET);
+                System.out.println("✅Encryption completed. ");
                 break;
             case 2:
-                System.out.println("ℹ️ This Cypher only supports the following characters: A-Z | a-z | 0-9 | . , ! ? ");
                 System.out.println("Please introduce the path of your file for decrypting:");
                 String pathDecrypt = scan.nextLine();
                 System.out.println("Do you posses the decryption key?");
