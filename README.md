@@ -37,3 +37,86 @@ CipherClass.java
 - encrypt(String line, int key) – Applies Caesar Cipher to the input string.
 - decrypt(String line, int key) – Reverses Caesar Cipher logic.
 
+# ------------------------------------------------------------------------------
+
+# Caesar Cipher Project — Final Version
+## 📌 Project Overview
+This is a Java-based Caesar Cipher program that allows you to:
+
+- 🔒 Encrypt files using a Caesar Cipher shift
+- 🔓 Decrypt files with a known key
+- 💣 Brute-force decrypt files without a key
+
+### 📁 Folder Structure
+/src
+
+├── Main.java 
+
+Entry point of the program.
+- Instantiates the Menu class
+- Starts the menu loop to let the user choose between encryption, decryption, or brute force
+  
+├── Menu.java
+
+Handles user interaction through a console menu.
+- showOptions() displays the available operations
+- executeOption() handles input, file/key validation, and triggers the corresponding logic
+- Also asks if the user has a key for decryption and routes to brute force if not
+
+  
+├── Validator.java
+  
+Validates file paths and encryption/decryption keys.
+- validateFile(String path) checks if the file exists
+- validateKey(int key) ensures the key is within valid range 
+
+├── FileManager.java
+
+Manages file input/output operations.
+- readFile(String path) reads a file and returns its content as StringBuilder
+- createFileForEnc(String text) writes the encrypted text to encrypted_file.txt
+- createFileForDec(String text) writes the decrypted text to decrypted_file.txt
+  
+├── Cypher.java
+
+Core encryption and decryption logic using the Caesar Cipher.
+- encrypt(StringBuilder text, int key, char[] alphabet) shifts characters forward by key
+- decrypt(StringBuilder text, int key, char[] alphabet) shifts characters backward by key
+- Skips characters not in the defined alphabet (keeps them unchanged)
+  
+├── BruteForce.java
+
+Attempts to decrypt a file without a known key by trying every possible Caesar shift.
+- crack(StringBuilder fileContent, char[] alphabet) loops through all keys and appends the decrypted output for each
+- Currently uses basic preview (All possible combinations in the file, no auto-validation)
+  
+└── Alphabet.java
+Defines the Caesar Cipher alphabet.
+- ENGLISH_ALPHABET contains uppercase, lowercase, digits, and punctuation:
+A-Z a-z 0-9 . , ! ? [space]
+  
+README.md
+
+subaruSpeech.txt
+
+### ⚙️ How It Works
+1. Run the program.
+2.  Use the console menu to select an action:
+- Encrypt
+- Decrypt
+  - With Key
+  - With BF
+- Exit
+
+3. Input file paths and key as required.
+4. The program creates an output file with the results.
+
+### 🧠 Brute Force Method
+- Decrypts the file with every possible key.
+- Outputs all possible decryptions.
+- You can review them to find the correct one.
+
+✍️ Author
+Juan Felipe Marin
+Modulo 1 - CodeGym
+Profesor: Lionel 
