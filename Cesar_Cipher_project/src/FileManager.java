@@ -18,7 +18,7 @@ public class FileManager {
 
     public static void createFileForEnc(String encryptedText) throws IOException {
 
-        String fileName = "encrypted_file.txt";
+        String fileName = "encrypted_" + System.currentTimeMillis() + ".txt";
         FileWriter newFile;
 
         try {
@@ -41,7 +41,7 @@ public class FileManager {
 
     public static void createFileForDec(String decryptedText) throws IOException {
 
-        String fileName = "decrypted_file.txt";
+        String fileName = "decrypted_" + System.currentTimeMillis() + ".txt";
         FileWriter newFile;
 
         try {

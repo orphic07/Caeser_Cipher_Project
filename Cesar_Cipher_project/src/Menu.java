@@ -115,10 +115,10 @@ public class Menu {
 
                                 //Step 3.1.2: Decrypt given file
 
-                                StringBuilder fileContentD = FileManager.readFile(pathDecrypt);
-                                String decryptedText = Cypher.decrypt(fileContentD, keyDecrypt, Alphabet.ENGLISH_ALPHABET);
+                                StringBuilder fileContentDec = FileManager.readFile(pathDecrypt);
+                                String decryptedText = Cypher.decrypt(fileContentDec, keyDecrypt, Alphabet.ENGLISH_ALPHABET);
 
-                                //Step 4: Create new file with encrypted text
+                                //Step 4: Create new file with decrypted text
 
                                 FileManager.createFileForDec(decryptedText);
 
@@ -132,7 +132,14 @@ public class Menu {
                                 System.out.println("Please wait while we try all possible combinations.");
                                 System.out.println("This may take a moment depending on the file size.");
 
-                                //brute force process
+                                StringBuilder fileContentDecBF = FileManager.readFile(pathDecrypt);
+                                String decryptedTextBF = BruteForce.crack(fileContentDecBF, Alphabet.ENGLISH_ALPHABET);
+
+                                // 3.2.1: Create new file with decrypted text
+
+                                FileManager.createFileForDec(decryptedTextBF);
+
+                                break;
 
                             default:
 
