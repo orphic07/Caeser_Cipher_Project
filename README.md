@@ -117,6 +117,9 @@ subaruSpeech.txt
 - You can review them to find the correct one.
 
 ✍️ Author
+
 Juan Felipe Marin
+
 Modulo 1 - CodeGym
+
 Profesor: Lionel 
